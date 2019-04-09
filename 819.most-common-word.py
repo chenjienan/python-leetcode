@@ -57,6 +57,15 @@
 # 
 #
 class Solution:
-    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+    def mostCommonWord(self, p: str, b: List[str]) -> str:
+        words = re.findall(r'\w+', p.lower())
         
+        import collections
+        cntr = collections.Counter(words)
+
+        for word in b:
+            if word in cntr:
+                del cntr[word]
+        
+        return cntr.most_common(1)[0][0]
 
