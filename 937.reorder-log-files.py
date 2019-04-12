@@ -58,7 +58,6 @@
 class Solution:
     def reorderLogFiles(self, logs):
         d_ls, l_ls = [], [] 
-        ls = []
         for log in logs:
             if log.split()[1].isdigit():
                 # The digit-logs should be put in their original order

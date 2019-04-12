@@ -24,24 +24,36 @@ class Solution:
     @param K: The length of substrings.
     @return: return the count of substring of length K and exactly K distinct characters.
     """
-    def KSubstring(self, stringIn, K):
-        # Write your code here
-        if len(stringIn) < K: return 0
+    def KSubstring(self, stringIn, k):
+        n = len(stringIn)
+        if k > n or not stringIn: return 0
+        
+        s = set()
+        for i in range(n - k + 1):
+            word = stringIn[i:i+k]
+            if len(set(word)) == k:
+                s.add(word)
+        
+        return len(s)
 
-        dist_substring = set()
-        window = ''
+    # def KSubstring(self, stringIn, K):
+    #     # Write your code here
+    #     if len(stringIn) < K: return 0
+
+    #     dist_substring = set()
+    #     window = ''
         
-        for c in stringIn:
-            if c in window:
-                window = window[window.index(c) + 1:]
+    #     for c in stringIn:
+    #         if c in window:
+    #             window = window[window.index(c) + 1:]
                 
-            window += c
+    #         window += c
             
-            if len(window) == K:
-                dist_substring.add(window)
-                window = window[1:]
+    #         if len(window) == K:
+    #             dist_substring.add(window)
+    #             window = window[1:]
         
-        return len(dist_substring)
+    #     return len(dist_substring)
 
     # def KSubstring(self, stringIn, K):
     #     # Write your code here

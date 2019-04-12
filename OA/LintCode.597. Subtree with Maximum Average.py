@@ -25,31 +25,33 @@
 class Solution:
     # @param {TreeNode} root the root of binary tree
     # @return {TreeNode} the root of the maximum average of subtree
-    average_val = 0
-    node = None
     
     def findSubtree2(self, root):
         # Write your code here
-        self.visit(root)
-        return self.node
+        self.max_ave_pair = (-float('inf'), None)    # store max-average and the node
+
+        self._helper(root)
+        return self.max_ave_pair[1]
+
+        # return the total value and the size
+        # of the subtree
+    def _helper(self, node):       
+        if not node: return 0, 0
         
-    
-    def visit(self, node):
+        # divide and conquer 
+        left_total, left_num = self._helper(node.left)
+        right_total, right_num = self._helper(node.right)
         
-        if node is None:
-            return 0, 0
-        
-        left_sum, left_size = self.visit(node.left)
-        right_sum, right_size = self.visit(node.right)
-        
-        # avg = sum / size
-        cur_max = left_sum + right_sum + node.val
-        node_num = left_size + right_size + 1
-        
-        cur_average = cur_max * 1.0 / node_num
-        
-        if self.node is None or cur_average > self.average_val:
-            self.average_val = cur_average
-            self.node = node
-        
-        return cur_max, node_num
+        total = left_total + right_total + node.val
+        size = left_num + right_num + 1
+
+        # search for the max_ave of the subtree
+        # then replace the old one
+        ave = total / size
+        if ave > self.max_ave_pair[0]:
+            self.max_ave_pair = (ave, node)
+            
+        return total, size
+
+
+

@@ -44,28 +44,21 @@ class Solution:
     """
     def aerial_Movie(self, t, dur):
         # Write your code here
-        if t == 0 or not dur:
-            return None
-            
-        target = t - 30
+        t = t - 30
         dur.sort()
-        mindiff = sys.maxsize
-        res = None
         
-        start, end = 0, len(dur) - 1
-        while start < end:
-            sumval = dur[start] + dur[end]
-            diff = target - sumval
-            if diff < 0:
-                end -= 1
-                continue
-            if diff < mindiff:
-                mindiff = diff
-                res = [dur[start], dur[end]]
-            if diff == 0:
-                start += 1
-                end -= 1
-            else:
-                start += 1
+        cur_max_t, res = 0, []
+        left, right = 0, len(dur) - 1        
+        
+        while left < right:
+            candidate = [dur[left], dur[right]]
+            time = dur[left] + dur[right]
+            
+            if time <= t and time > cur_max_t:      # keep tracking of the min_t
+                cur_max_t = time
+                res = candidate
                 
+            if time >= t: right -= 1
+            if time < t: left += 1
+        
         return res
