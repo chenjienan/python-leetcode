@@ -58,6 +58,7 @@
 #
 class Solution:
     def mostCommonWord(self, p: str, b: List[str]) -> str:
+        import re
         words = re.findall(r'\w+', p.lower())
         
         import collections
