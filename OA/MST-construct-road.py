@@ -1,9 +1,16 @@
 # connect all city with least cost
-numTotalAvailableCities = 6
-numTotalAvailableRoads = 3
-roadsAvailable = [[1, 4], [4, 5], [2, 3]]
-numNewRoadsConstruct = 4
-costNewRoadsConstruct = [[1, 2, 5], [1, 3, 10], [1, 6, 2], [5, 6, 5]]
+# numTotalAvailableCities = 6
+# numTotalAvailableRoads = 3
+# roadsAvailable = [[1, 4], [4, 5], [2, 3]]
+# numNewRoadsConstruct = 4
+# costNewRoadsConstruct = [[1, 2, 5], [1, 3, 10], [1, 6, 2], [5, 6, 5]]
+numTotalAvailableCities = 5
+numTotalAvailableRoads = 5
+roadsAvailable = [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
+numNewRoadsConstruct = 3
+costNewRoadsConstruct = [[1, 2, 12], [3, 4, 30], [1, 5, 8]]
+
+
 
 # 这是个最小生成树（MST）问题。但要注意整个图中已经有一些边了，不是从0开始的最小生成树。
 # 1. Union-Find所有已经有的路 in roadsAvailable list
