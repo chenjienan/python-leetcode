@@ -25,10 +25,6 @@ def getMinimumCostToRepair(numTotalAvailableCities,
                            numRoadsToBeRepaired, 
                            costRoadsToBeRepaired):
     # WRITE YOUR CODE HERE
-    
-    # if numTotalAvailableCities < 2 or numTotalAvailableRoads >= numTotalAvailableCities - 1:
-    #     return 0
-    
     existing_roads = roadsAvailable
     for road in costRoadsToBeRepaired:
         road_to_repair = [road[0], road[1]]
