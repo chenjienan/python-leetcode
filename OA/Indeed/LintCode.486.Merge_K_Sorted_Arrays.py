@@ -16,10 +16,12 @@ class Solution:
             if len(array) == 0: continue
             heapq.heappush(heap, (array[0], i, 0))  # (value, array_index, element_index)
 
+        # this heap is always keeping x (x<k) elements
         while heap:
             val, array_i, elem_i = heapq.heappop(heap)
             res.append(val)
-        
+
+            # add one element from the current array
             if elem_i + 1 < len(arrays[array_i]):
                 heapq.heappush(heap, (arrays[array_i][elem_i+1], array_i, elem_i + 1))
 

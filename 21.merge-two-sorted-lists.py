@@ -12,6 +12,7 @@
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         new_ls = ListNode(0)    # dummy head
+        # we have no idea what is the next node
         ptr = new_ls
         while l1 and l2:
 
