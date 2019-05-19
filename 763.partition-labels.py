@@ -40,13 +40,13 @@ class Solution:
         d = {}
         res = []
         # store last index of each char
-        for i in range(len(S)):
-            d[S[i]] = i
+        for i, v in enumerate(S):
+            d[v] = i
 
         # 2 pointers same direction
         start, end = 0, 0
-        for j in range(len(S)):
-            end = max(end, d[S[j]])     # expand
+        for j, v in enumerate(S):
+            end = max(end, d[v])     # check the last index of cur char
             if j == end:                # self-contained
                 res.append(end - start + 1)
                 start = end + 1         # new starts
