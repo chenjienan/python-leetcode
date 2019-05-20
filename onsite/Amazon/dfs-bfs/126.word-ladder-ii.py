@@ -15,15 +15,15 @@ class Solution(object):
         dist = {}
 
         # set the distance
-        self.bfs(endWord, dist, wordList)
+        self.bfs(endWord, beginWord, dist, wordList)
         res =  []
         self.dfs(beginWord, endWord, dist, wordList, [beginWord], res)
         return res
 
-    # purpose of this function is to build the distance hash
-    def bfs(self, end, dist, wordList):
-        dist[end] = 0
-        queue = collections.deque([end])
+    # purpose of this function is to get the distance hash
+    def bfs(self, start, end, dist, wordList):
+        dist[start] = 0
+        queue = collections.deque([start])
 
         while queue:
             word = queue.popleft()
