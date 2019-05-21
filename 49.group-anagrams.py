@@ -34,6 +34,8 @@
 #
 class Solution:
     def groupAnagrams(self, strs):
+        # key: sorted str
+        # value: list of anagram
         d = {}
         for w in strs:
             key = ''.join(sorted(w))

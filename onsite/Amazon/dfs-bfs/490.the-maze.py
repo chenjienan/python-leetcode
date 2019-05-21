@@ -17,47 +17,48 @@ class Solution(object):
         # 基本包
         rows = len(maze)
         cols = len(maze[0])
-        return self._dfs(maze, start[0], start[1], rows, cols, destination)
-        # queue = collections.deque([start])
+        # return self._dfs(maze, start[0], start[1], rows, cols, destination)
+        queue = collections.deque([start])
+        visited = set()
         
-        # while queue:
-        #     x, y = queue.popleft()
-        #     # mark visited
-        #     maze[x][y] = '#'
-        #     # check if arrived
-        #     if x == destination[0] and y == destination[1]: return True
-        #     for d_x, d_y in DIRECTION:
-        #         nxt_x, nxt_y = x, y
-        #         # 每次选一个方向滚到底
-        #         while 0 <= nxt_x < rows and 0 <= nxt_y < cols and \
-        #             maze[nxt_x][nxt_y] != 1:
-        #             nxt_x += d_x
-        #             nxt_y += d_y
+        while queue:
+            x, y = queue.popleft()
+            if (x, y) in visited: continue
+            visited.add((x, y))
+            # check if arrived
+            if x == destination[0] and y == destination[1]: return True
+            for d_x, d_y in DIRECTION:
+                # 加,或者不加delta变量不会影响结果
+                nxt_x, nxt_y = x + d_x, y + d_y
+                # 每次选一个方向滚到底
+                while 0 <= nxt_x < rows and 0 <= nxt_y < cols and \
+                    maze[nxt_x][nxt_y] != 1:
+                    nxt_x += d_x
+                    nxt_y += d_y
+                # x and y locates @ a wall when exiting the above while loop, so we need to backtrack 1 position
+                nxt_x -= d_x
+                nxt_y -= d_y
 
-        #         # x and y locates @ a wall when exiting the above while loop, so we need to backtrack 1 position
-        #         nxt_x -= d_x
-        #         nxt_y -= d_y
-
-        #         # Check if the new starting position has been visited
-        #         if maze[nxt_x][nxt_y] == 0: queue.append([nxt_x, nxt_y])
+                # Check if the new starting position has been visited
+                if maze[nxt_x][nxt_y] not in visited: queue.append([nxt_x, nxt_y])
         
-        # return False
-
-    def _dfs(self, maze, x, y, rows, cols, dest):
-        # base case
-        if maze[x][y] == '#': return False
-        if [x, y] == dest: return True
-
-        maze[x][y] = '#'
-        for d_x, d_y in DIRECTION:
-            nxt_x, nxt_y = x, y
-            # 每次选一个方向滚到底
-            while 0 <= nxt_x < rows and 0 <= nxt_y < cols and \
-                maze[nxt_x][nxt_y] != 1:
-                nxt_x += d_x
-                nxt_y += d_y
-            nxt_x -= d_x
-            nxt_y -= d_y
-
-            if self._dfs(maze, nxt_x, nxt_y, rows, cols, dest): return True
         return False
+
+    # def _dfs(self, maze, x, y, rows, cols, dest):
+    #     # base case
+    #     if maze[x][y] == '#': return False
+    #     if [x, y] == dest: return True
+
+    #     maze[x][y] = '#'
+    #     for d_x, d_y in DIRECTION:
+    #         nxt_x, nxt_y = x, y
+    #         # 每次选一个方向滚到底
+    #         while 0 <= nxt_x < rows and 0 <= nxt_y < cols and \
+    #             maze[nxt_x][nxt_y] != 1:
+    #             nxt_x += d_x
+    #             nxt_y += d_y
+    #         nxt_x -= d_x
+    #         nxt_y -= d_y
+
+    #         if self._dfs(maze, nxt_x, nxt_y, rows, cols, dest): return True
+    #     return False

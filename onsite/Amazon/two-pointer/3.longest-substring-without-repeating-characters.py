@@ -15,7 +15,7 @@ class Solution:
             # if we found a repeated char
             # update the start position
             if v in d and start < d[v]:
-                start = d[v]    # change to the index of the cur window
+                start = d[v]
             # else, update the res
             else:
                 res = max(res, end - start) # end - start is the cur length

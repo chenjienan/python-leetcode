@@ -23,5 +23,5 @@ class Solution(object):
         left = 0    # 为end time设定的一个left pointer
         for i in range(len(intervals)):
             if start[i] < end[left]: cnt += 1
-            else: left += 1
+            else: left += 1     # move index to next end time
         return cnt
