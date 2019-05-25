@@ -1,46 +1,9 @@
-class Direction:
-    UP = 'UP'
-    DOWN = 'DOWN'
-
-class Status:
-    UP = 'UP'
-    DOWN = 'DOWN'
-    IDLE = 'IDLE'
-
-class Request:
-    def __init__(self,l = 0):
-        self.level = l
-        
-    def getLevel(self):
-        return self.level
-
-class ElevatorButton:
-    def __init__(self,level,e):
-        self.level = level
-        self.elevator = e
-        
-    def pressButton(self):
-        request = InternalRequest(self.level)
-        self.elevator.handleInternalRequest(request);
-
-class ExternalRequest(Request):
-    def __init__(self,l = 0,d = None):
-        Request.__init__(self,l)
-        self.direction = d
-
-    def getDirection(self):
-        return self.direction
-
-class InternalRequest(Request):
-    def __init__(self,l = None):
-        Request.__init__(self,l)
-
 class Elevator:
-    def __init__(self, n):
+    def __init__(self, n):				# n = number of levels
         # Keep them, don't modify.
         self.buttons = []
-        self.upStops = []
-        self.downStops = []
+        self.upStops = []				# array of boolean
+        self.downStops = []				# array of boolean
         for i in xrange(n):
             self.upStops.append(False)
             self.downStops.append(False)
@@ -50,8 +13,10 @@ class Elevator:
     def insertButton(self,eb):
         self.buttons.append(eb)
 
-    def handleExternalRequest(self,r):
+    def handleExternalRequest(self,r):		# external request r: r.getDriection(), r.getLevel()
         # Write your code here  
+
+		# user can only press up or down button
     	if r.getDirection() == Direction.UP:
 			self.upStops[r.getLevel() - 1] = True
 			if self.noRequests(self.downStops):
@@ -76,7 +41,7 @@ class Elevator:
 		if self.status == Status.UP:
 		    for i in xrange(len(self.upStops)):
 		        checkLevel = (self.currLevel + i) % len(self.upStops)
-		        if self.upStops[checkLevel]:
+		        if self.upStops[checkLevel]:		# upStops[checkLevel] arrived
 		            self.currLevel = checkLevel
 		            self.upStops[checkLevel] = False
 		            break
@@ -84,7 +49,7 @@ class Elevator:
 		elif self.status == Status.DOWN:
 			for i in xrange(len(self.downStops)):
 			    checkLevel = (self.currLevel + len(self.downStops) - i) % len(self.downStops)
-			    if self.downStops[checkLevel]:
+			    if self.downStops[checkLevel]:		# downStops[checkLevel] arrived
 			        self.currLevel = checkLevel
 			        self.downStops[checkLevel] = False
 			        break

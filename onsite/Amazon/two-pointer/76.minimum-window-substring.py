@@ -24,6 +24,7 @@ class Solution:
             # add cur char to the window
             window_count[ch_r] = window_count.get(ch_r, 0) + 1
 
+            # found the unique char
             if ch_r in d and window_count[ch_r] == d[ch_r]: num_unique_char_t += 1
             
             # shrink the size until window is not desirable

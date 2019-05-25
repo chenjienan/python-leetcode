@@ -39,6 +39,7 @@ class Solution(object):
         
         # word match, proceed next step
         visited.append((r, c))
+        # check all 4 directions
         nxt = self._dfs(board, word[1:], r - 1, c, rows, cols, visited) or \
                 self._dfs(board, word[1:], r + 1, c, rows, cols, visited) or \
                 self._dfs(board, word[1:], r, c + 1, rows, cols, visited) or \

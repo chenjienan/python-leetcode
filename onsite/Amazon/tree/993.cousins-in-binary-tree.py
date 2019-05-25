@@ -24,6 +24,7 @@ class Solution(object):
 
         queue = collections.deque([root])
         while queue:
+            # level order traversal
             lv = []
             # all value are unique
             # key: node value

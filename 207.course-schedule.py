@@ -55,18 +55,18 @@ class Solution:
         course_seq = []
         q = []
 
-        for node in range(numCourses):
-            if in_degree[node] == 0:
-                q.append(node)
+        for neighbour in range(numCourses):
+            if in_degree[neighbour] == 0:
+                q.append(neighbour)
 
         while q:
             cur_node = q[0]
             course_seq.append(cur_node)
 
-            for node in courses[cur_node]:
-                in_degree[node] -= 1
-                if in_degree[node] == 0:
-                    q.append(node)
+            for neighbour in courses[cur_node]:
+                in_degree[neighbour] -= 1
+                if in_degree[neighbour] == 0:
+                    q.append(neighbour)
             
             q = q[1:]
         
@@ -74,8 +74,11 @@ class Solution:
 
 
     def build_graph(self, numCourses, prerequisites):
-        # key: node, value: neighbours
+        # key: node
+        # value: neighbours
         edges = {e:[] for e in range(numCourses)}
+        # index: node
+        # value: degree
         degrees = [0 for d in range(numCourses)]
         
         # create the relationship: add neighbours

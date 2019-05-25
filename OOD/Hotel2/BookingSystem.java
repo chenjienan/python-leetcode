@@ -10,7 +10,8 @@ public class BookingSystem {
 	{
 		List<Hotel> availableHotels = new ArrayList<>();
 		for(Hotel hotel : hotels)
-		{
+		{	
+			// Create a new search
 			SearchRequest searchRequest = new SearchRequest(request.getStartDate(), request.getEndDate());
 			Map<RoomType, List<Room>> searchRes = hotel.handleSearchResult(searchRequest);
 			int availableCapacity = 0;

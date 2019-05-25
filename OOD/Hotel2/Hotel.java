@@ -1,8 +1,7 @@
 // 题目：设计Booking System
 // 目前系统里有两家Hotel
 // Hotel目前有两种房间类型：SINGLE和DOUBLE
-// Booking System能够支持搜索，输入日期 和 人数， 能够返回住得下
-// 的Hotels
+// Booking System能够支持搜索，输入日期 和 人数， 能够返回住得下的Hotels
 // 能够支持预定
 // 能够取消预定
 // 需要实现BookingSystem class

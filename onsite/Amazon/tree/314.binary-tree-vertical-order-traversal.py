@@ -33,6 +33,11 @@ class Solution(object):
                 queue.append((node.right, pos + 1))
         
         # 按照key排序
-        return [hash[i] for i in sorted(hash)]
+
+        res = []
+        for i in sorted(hash):
+            res.append(hash[i])
+        return res
+        # return [hash[i] for i in sorted(hash)]
         
 
