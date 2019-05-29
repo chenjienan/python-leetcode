@@ -11,7 +11,6 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-
         cur = head
         pre = None
 
@@ -20,5 +19,4 @@ class Solution:
             cur.next = pre
             pre = cur
             cur = nxt
-        
         return pre
