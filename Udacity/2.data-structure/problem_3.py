@@ -51,9 +51,9 @@ def huffman_encoding(data):
     
     codes = get_compressed_form(huffman_root)
     encoded_data = ""
-    for ch in data:
+    for ch in data: 
         encoded_data += codes[ch]
-    print('====', codes)
+
     return encoded_data, huffman_root
 
 

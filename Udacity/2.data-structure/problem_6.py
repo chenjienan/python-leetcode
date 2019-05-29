@@ -89,17 +89,17 @@ def remove_duplicates(head):
     if head is None: return head
     hash_set.add(head.value)
 
-    new_head = head;
-    cur = head.next;
-    while cur is not None:
+    new_head = head
+    cur = head.next
+    while cur:
         if cur.value not in hash_set:
             hash_set.add(cur.value)
             new_head.next = cur
             new_head = new_head.next
-        cur = cur.next;
+        cur = cur.next
 
-    new_head.next = None;
-    return head;
+    new_head.next = None
+    return head
 
 def sort_list(head):
     if not head or not head.next: return head

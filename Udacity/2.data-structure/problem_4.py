@@ -41,7 +41,7 @@ def is_user_in_group(user, group):
     """
     if user in group.get_users(): return True
     
-    for g in group.get_groups():
-        if is_user_in_group(user, group): return True
+    for sub_group in group.get_groups():
+        if is_user_in_group(user, sub_group): return True
     
     return False
