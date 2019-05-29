@@ -13,21 +13,37 @@ class Solution:
     def reverseBetween(self, head, m, n):
         # need dummy node for head reference
         # because the linkedlist changed after reversed.
-        new_head = ListNode(-1)
-        new_head.next = head        # append the list
+        dummy = ListNode(-1)
+        dummy.next = head        # append the list
         
-        pre = new_head
+        # 除了移动节点之外，关键是链接头和尾
+        pre_ls_node = nth_node = dummy
         for _ in range(1, m):
-            pre = pre.next
+            pre_ls_node = pre_ls_node.next
 
-        start = pre.next
-        nxt = start.next
+        for _ in range(1, n+1):
+            nth_node = nth_node.next
+                
+        # pre_ls是reversed list的前节点
+        # nxt_ls是reversed list的后节点
+        mth_node = pre_ls_node.next
+        nxt_ls_node = nth_node.next      # mark down 后节点
+        nth_node.next = None        # set mth-node next to None for reversing
 
-        for _ in range(m, n):
-            start.next = nxt.next
-            nxt.next = pre.next
-            pre.next = nxt
-            nxt = start.next
+        self.reverseList(mth_node)
+        pre_ls_node.next = nth_node
+        mth_node.next = nxt_ls_node
 
-        return new_head.next
-   
+        return dummy.next
+        
+    def reverseList(self, head):
+        pre = None
+        cur = head
+
+        while cur:
+            nxt = cur.next  # for moving to the next pointer
+            cur.next = pre
+            pre = cur
+            cur = nxt
+        
+        return pre

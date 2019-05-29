@@ -1,0 +1,24 @@
+Task 0:
+Let the size of calls be n, and the size of texts be m
+getting the first and last records are performing O(1)
+
+Task 1:
+Let the size of calls be n, and the size of texts be m
+traversing all records require O(n + m)
+
+Task 2
+Let the size of calls be n
+scan through all phones in calls is O(n)
+get the max duration O(n)
+O(n + n) = O(2n) => O(n)
+
+Task 3
+Let the size of calls be n
+scan through all phones in calls is O(n)
+sorting:O(nlogn)
+output: O(m) (m <= n)
+total: O(nlogn + n + m) => O(nlogn)
+
+Task 4
+Let the size of calls be n, and the size of texts be m
+O(n + mlogm)
