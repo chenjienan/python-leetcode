@@ -187,26 +187,12 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
+print (intersection(linked_list_3,linked_list_4))
 print (union(linked_list_3,linked_list_4))
+# intersection should return nothing
+# union should return 3 -> 4 -> 6 -> 23 -> 35 -> 65 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 ->
 
 print("=== test case 3 ===")
-linked_list_10 = LinkedList()
-linked_list_11 = LinkedList()
-
-element_1 = [3,2,4,35,6,65,6,4,3,23]
-element_2 = [1,7,8,9,11,21,1]
-
-for i in element_1:
-    linked_list_10.append(i)
-
-for i in element_2:
-    linked_list_11.append(i)
-    
-print (intersection(linked_list_10,linked_list_11))
-# should return nothing
-
-# test case 3
-print("=== test case 4 ===")
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
 
@@ -220,9 +206,11 @@ for i in element_2:
     linked_list_4.append(i)
     
 print (intersection(linked_list_3,linked_list_4))
-# should return nothing
+print (union(linked_list_3,linked_list_4))
+# intersection should return nothing
+# union should return 3 -> 4 -> 6 -> 23 -> 35 -> 65 ->
 
-print("=== test case 5 ===")
+print("=== test case 4 ===")
 
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
@@ -236,5 +224,7 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
+print (intersection(linked_list_3,linked_list_4))
 print (union(linked_list_3,linked_list_4))
-# should return 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 ->
+# intersection should return nothing
+# union should return 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 ->
