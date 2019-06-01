@@ -45,6 +45,23 @@ def union(llist_1, llist_2):
     """
     merge two list and remove duplicates
     """
+    if not llist_1.head and not llist_2.head: return 
+    
+    res_ls = LinkedList()
+    if not llist_1.head: 
+        head = llist_2.head 
+        while head:
+            res_ls.append(head.value)
+            head = head.next
+        return res_ls
+
+    if not llist_2.head: 
+        head = llist_1.head
+        while head:
+            res_ls.append(head.value)
+            head = head.next
+        return res_ls
+
     dummy = Node(-1)
     dummy.next = llist_1.head
     
@@ -54,7 +71,7 @@ def union(llist_1, llist_2):
         
     ptr.next = llist_2.head
     de_dup_ls_head = remove_duplicates(dummy.next)
-    res_ls = LinkedList()
+    
     while de_dup_ls_head:
         res_ls.append(de_dup_ls_head.value)
         de_dup_ls_head = de_dup_ls_head.next
@@ -81,7 +98,7 @@ def intersection(llist_1, llist_2):
 
         while dedup_ls_head_2 and dedup_ls_head_1.value > dedup_ls_head_2.value:
             dedup_ls_head_2 = dedup_ls_head_2.next
-
+    
     return new_head
 
 def remove_duplicates(head):
@@ -138,7 +155,7 @@ def merge_sorted_lists(ls_1, ls_2):
 
 
 # Test case 1
-
+print("=== test case 1 ===")
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -151,11 +168,13 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
-# print (union(linked_list_1,linked_list_2))
-# print (intersection(linked_list_1,linked_list_2))
+print (union(linked_list_1,linked_list_2))
+print (intersection(linked_list_1,linked_list_2))
+# should return 3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 21 -> 32 -> 9 -> 1 -> 11 ->
+# should return 6 -> 32 -> 35 -> 65 ->
 
 # Test case 2
-
+print("=== test case 2 ===")
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
 
@@ -168,13 +187,17 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
+print (intersection(linked_list_3,linked_list_4))
 print (union(linked_list_3,linked_list_4))
+# intersection should return nothing
+# union should return 3 -> 4 -> 6 -> 23 -> 35 -> 65 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 ->
 
+print("=== test case 3 ===")
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
 
 element_1 = [3,2,4,35,6,65,6,4,3,23]
-element_2 = [1,7,8,9,11,21,1]
+element_2 = []
 
 for i in element_1:
     linked_list_3.append(i)
@@ -183,3 +206,25 @@ for i in element_2:
     linked_list_4.append(i)
     
 print (intersection(linked_list_3,linked_list_4))
+print (union(linked_list_3,linked_list_4))
+# intersection should return nothing
+# union should return 3 -> 4 -> 6 -> 23 -> 35 -> 65 ->
+
+print("=== test case 4 ===")
+
+linked_list_3 = LinkedList()
+linked_list_4 = LinkedList()
+
+element_1 = []
+element_2 = [1,7,8,9,11,21,1]
+
+for i in element_1:
+    linked_list_3.append(i)
+
+for i in element_2:
+    linked_list_4.append(i)
+
+print (intersection(linked_list_3,linked_list_4))
+print (union(linked_list_3,linked_list_4))
+# intersection should return nothing
+# union should return 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 ->

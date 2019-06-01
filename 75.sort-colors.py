@@ -48,7 +48,7 @@ class Solution:
         l, m, r = 0, 0, len(nums) - 1
 
         # use m pointer to traverse the string
-        while m + 1 < r:
+        while m <= r:
             if nums[m] == 0:
                 nums[l], nums[m] = nums[m], nums[l]
                 l += 1          
