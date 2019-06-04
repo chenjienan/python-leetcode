@@ -16,7 +16,7 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
-    if not path: raise Exception("path cannot be empty.")
+    
     base_dir = os.path.dirname(os.path.abspath(__file__))    
     target_dir = os.path.join(base_dir, path)
     
@@ -33,54 +33,8 @@ def find_files(suffix, path):
 
     return files
 
-import pprint
 
-print("===Test case 1===")
-files = find_files(".h", r'testdir')
-pprint.pprint(files)
+# files = find_files(".h", r'testdir')
 
-# return
-# ['c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir1\\a.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir3\\subsubdir1\\b.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir5\\a.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\t1.h']
-
-print("===Test case 2===")
-files = find_files(".c", '.')
-pprint.pprint(files)
-
-# return
-# ['c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\.\\testdir\\subdir1\\a.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\.\\testdir\\subdir3\\subsubdir1\\b.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\.\\testdir\\subdir5\\a.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\.\\testdir\\t1.c']
-
-print("===Test case 3===")
-files = find_files(".abc", '.')
-pprint.pprint(files)
-
-# return 
-# []
-
-print("===Test case 4===")
-files = find_files('', 'testdir')
-pprint.pprint(files)
-
-# return 
-# ['c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir1\\a.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir1\\a.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir2\\.gitkeep',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir3\\subsubdir1\\b.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir3\\subsubdir1\\b.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir4\\.gitkeep',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir5\\a.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\subdir5\\a.h',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\t1.c',
-#  'c:\\projects\\python-leetcode\\Udacity\\2.data-structure\\testdir\\t1.h']
-
-print("===Test case 5===")
-files = find_files(".c", '')
-pprint.pprint(files)
-
-# return
-# exception: path cannot be empty
+# import pprint
+# pprint.pprint(files)
