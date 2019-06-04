@@ -10,7 +10,7 @@
 #         self.next = None
 
 class Solution:
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    def removeNthFromEnd(self, head: ListNode, n: int):
         
         dummy = ListNode(-1)
         dummy.next = head
