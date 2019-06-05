@@ -29,17 +29,18 @@ class Solution(object):
             lenB += 1
             curB = curB.next
         
-        # trim the longer list
-        curA, curB = headA, headB
-        for _ in range(abs(lenA-lenB)):
-            if lenA >= lenB: curA = curA.next
-            else: curB = curB.next
-        
-        # move pointers until they are the same node
-        # if no intersection, curA and curB will be None
-        while curB != curA:
-            curA = curA.next
-            curB = curB.next
+        if lenA > lenB:
+            headA, headB = headB, headA         # headB is the longer one
 
-        # either curA or curB is ok
-        return curB
+        # # trim the longer list
+        # # move pointers until they are the same node
+        for _ in range(abs(lenA - lenB)):
+            headB = headB.next
+        
+        # if no intersection, headA and headB will be None
+        while headA and headB and headA != headB:
+            headA = headA.next
+            headB = headB.next
+        
+        # either headA or headB is ok
+        return headB
