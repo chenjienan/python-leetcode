@@ -22,10 +22,9 @@ class Solution(object):
 
         while cur and cur.next:
             if cur.val == cur.next.val:
-                cur.next = cur.next.next
+                cur.next = cur.next.next        # 跳过
             else:
                 cur = cur.next
-
 
         return dummy.next
 

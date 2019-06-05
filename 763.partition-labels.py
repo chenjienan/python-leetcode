@@ -39,6 +39,7 @@ class Solution:
         
         d = {}
         res = []
+        
         # store last index of each char
         for i, v in enumerate(S):
             d[v] = i

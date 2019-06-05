@@ -42,16 +42,6 @@ class Solution:
             res.append(subset)
         
         for i in range(len(choices)):
-            self.dfs(choices[:i] + choices[i+1:], subset + [choices[i]], length, res)
-    #     res = []
-    #     self.dfs(nums, [], res, len(nums))
-    #     return res
-
-    # def dfs(self, nums, sub_set, res, l):
-    #     if len(sub_set) == l: 
-    #         return res.append(sub_set)
-
-    #     for i in range(len(nums)):
-    #         self.dfs(nums[:i] + nums[i+1:], sub_set + [nums[i]], res, l)            
+            self.dfs(choices[:i] + choices[i+1:], subset + [choices[i]], length, res)      
 
 

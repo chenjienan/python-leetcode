@@ -46,3 +46,28 @@ class Solution(object):
                     # change color
                     image[new_x][new_y] = new
                     queue.append((new_x, new_y))
+
+    def floodFill_dfs(self, image, sr, sc, newColor):
+        rows = len(image)
+        cols = len(image[0])
+        oldColor = image[sr][sc]
+        # check if oldColor is already painted
+        if oldColor != newColor:            
+            self.dfs(image, sr, sc, rows, cols, oldColor, newColor)
+        return image
+
+    def dfs(self, image, r, c, rows, cols, color, new_color):
+        # base step
+        if r < 0 or r >= rows or \
+           c < 0 or c >= cols or \
+           image[r][c] != color:
+           return 
+
+        # do your stuff
+        image[r][c] = new_color
+        
+        # recursive step
+        self.dfs(image, r-1, c, rows, cols, color, new_color)
+        self.dfs(image, r+1, c, rows, cols, color, new_color)
+        self.dfs(image, r, c-1, rows, cols, color, new_color)
+        self.dfs(image, r, c+1, rows, cols, color, new_color) 
