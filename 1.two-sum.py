@@ -17,7 +17,8 @@ class Solution(object):
 
         # x + y = target
         for i, num in enumerate(nums):
-            if num in h and i != h[num]: return i, h[num]
+            if num in h and i != h[num]: 
+                return i, h[num]
         
         return -1
 

@@ -4,7 +4,7 @@
 # [3] Longest Substring Without Repeating Characters
 #
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, s: str):
         # start: track the position of the longest substring
         res, start = 0, -1
         # key: char
