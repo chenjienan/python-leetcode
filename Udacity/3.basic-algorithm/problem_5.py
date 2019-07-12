@@ -2,25 +2,43 @@
 class Trie:
     def __init__(self):
         ## Initialize this Trie (add a root node)
+        self.root = TrieNode()
 
     def insert(self, word):
         ## Add a word to the Trie
+        cur_node = self.root
+        for w in word:
+            cur_node = cur_node.children[w]        
+        cur_node.is_word = True
 
     def find(self, prefix):
         ## Find the Trie node that represents this prefix
+        cur_node = self.root
+        for w in prefix:
+            if w not in cur_node.children: return None
 
+            cur_node = cur_node.children[w]
+
+        return cur_node            
+
+from collections import defaultdict
 class TrieNode:
     def __init__(self):
         ## Initialize this node in the Trie
-        pass
+        self.children = defaultdict(TrieNode)
+        self.is_word = False
     
     def insert(self, char):
         ## Add a child node in this Trie
-        pass
+        self.children[char] = TrieNode()
         
     def suffixes(self, suffix = ''):
         ## Recursive function that collects the suffix for 
         ## all complete words below this point
+        words = []
+
+        while self.children:
+
 
 MyTrie = Trie()
 wordList = [

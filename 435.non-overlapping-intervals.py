@@ -14,12 +14,21 @@ class Solution(object):
         
         end_point = intervals[0][1]
         res = 0
-        for i in range(1,len(intervals)):
-            if end_point > intervals[i][0]:
+
+        for x_start, x_end in intervals[1:]:
+            if x_start < end_point:
                 res += 1
-                end_point = min(end_point, intervals[i][1])
+                end_point = min(end_point, x_end)
             else:
-                # move to next end
-                end_point = intervals[i][1]
+                end_point = x_end
         return res
+
+        # for i in range(1,len(intervals)):
+        #     if end_point > intervals[i][0]:
+        #         res += 1
+        #         end_point = min(end_point, intervals[i][1])     # expand the interval
+        #     else:
+        #         # move to next end
+        #         end_point = intervals[i][1]
+        # return res
 
