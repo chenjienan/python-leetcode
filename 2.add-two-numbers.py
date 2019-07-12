@@ -1,4 +1,4 @@
-#
+# collected
 # @lc app=leetcode id=2 lang=python
 #
 # [2] Add Two Numbers
