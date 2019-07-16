@@ -4,7 +4,7 @@
 # [908] Smallest Range I
 #
 class Solution:
-    def smallestRangeI(self, A: List[int], K: int):
+    def smallestRangeI(self, A, K):
         if len(A) == 1: return 0
         
         A.sort()

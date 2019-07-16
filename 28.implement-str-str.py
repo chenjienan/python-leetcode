@@ -48,4 +48,3 @@ class Solution:
             if haystack[i: i+len_n] == needle:
                 return i
         return -1
-

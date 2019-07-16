@@ -4,7 +4,7 @@
 # [910] Smallest Range II
 #
 class Solution:
-    def smallestRangeII(self, A: List[int], K: int):
+    def smallestRangeII(self, A, K):
         A.sort()
         max_val = A[len(A) - 1]
         min_val = A[0]
