@@ -8,7 +8,8 @@ class Trie:
         ## Add a word to the Trie
         cur_node = self.root
         for w in word:
-            cur_node = cur_node.children[w]        
+            cur_node = cur_node.insert(w)
+
         cur_node.is_word = True
 
     def find(self, prefix):
@@ -21,6 +22,20 @@ class Trie:
 
         return cur_node            
 
+
+
+
+# insert word: AND
+# Trie root = TrieNode
+# no children
+#      TrieNode (root)
+#           |
+#           A
+#           |
+#           N
+#           |
+#           D
+
 from collections import defaultdict
 class TrieNode:
     def __init__(self):
@@ -31,6 +46,7 @@ class TrieNode:
     def insert(self, char):
         ## Add a child node in this Trie
         self.children[char] = TrieNode()
+        return self.children[char]
         
     def suffixes(self, suffix = ''):
         ## Recursive function that collects the suffix for 
