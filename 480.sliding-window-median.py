@@ -3,7 +3,7 @@
 #
 # [480] Sliding Window Median
 #
-from heapq import *
+import heapq
 
 class HashHeap:
     def __init__(self):
@@ -12,7 +12,7 @@ class HashHeap:
         self._len = 0
 
     def push(self, val):
-        heappush(self.heap, val)
+        heapq.heappush(self.heap, val)
         self._len += 1
 
     def pop(self):
@@ -21,7 +21,7 @@ class HashHeap:
         """
         self._clean_top()
         self._len -= 1
-        return heappop(self.heap)
+        return heapq.heappop(self.heap)
 
     def remove(self, val):
         self.deleted[val] = self.deleted.get(val, 0) + 1
@@ -41,7 +41,7 @@ class HashHeap:
         # if heap top is 
         while self.heap and self.deleted.get(self.heap[0]):
             self.deleted[self.heap[0]] -= 1     # update occurence
-            heappop(self.heap)
+            heapq.heappop(self.heap)
 
     def __len__(self):
         return self._len
