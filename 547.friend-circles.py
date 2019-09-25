@@ -76,7 +76,6 @@ class Solution:
 
 
 class UnionFindSet:
-
     def __init__(self, n):
         self.father = {}
 
