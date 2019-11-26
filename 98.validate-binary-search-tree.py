@@ -40,5 +40,21 @@ class Solution:
         left = self.dfs(node.left, lower_bound, node.val)
         right = self.dfs(node.right, node.val, upper_bound)
 
-        return left and right
-
+        return left and right        
+    
+    def helper(self, node, lower, upper):
+        if not node:
+            return True
+        
+        if node.val <= lower or node.val >= upper:
+            return False
+        
+        # left child
+        if not self.helper(node.left, lower, node.val):
+            return False
+        
+        # right child
+        if not self.helper(node.right, node.val, upper):
+            return False
+        
+        return True
