@@ -7,7 +7,7 @@ DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 def infect(matrix):
     
     if not matrix:
-        return -1;
+        return -1
         
     zombie_pos = deque()
     rows = len(matrix)
